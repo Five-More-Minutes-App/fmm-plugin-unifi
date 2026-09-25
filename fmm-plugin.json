@@ -15,7 +15,8 @@
   "categories": [
     "network"
   ],
-  "platform": "Docker",
+  "platform": "Home Hub or Docker",
+  "requiresHub": true,
   "permissions": [
     {
       "scope": "state:read",
