@@ -1,0 +1,22 @@
+{
+  "name": "fmm-plugin-unifi",
+  "version": "1.0.0",
+  "description": "Cuts the internet for chosen devices on your UniFi network while Five More Minutes has the computer locked.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.3"
+  },
+  "scripts": {
+    "start": "node src/main.js",
+    "doctor": "node src/main.js --check",
+    "release": "node src/main.js --release",
+    "test": "node --test \"test/*.test.js\"",
+    "check": "tsc --noEmit -p jsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

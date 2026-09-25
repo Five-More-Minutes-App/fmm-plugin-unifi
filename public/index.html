@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>UniFi for Five More Minutes</title>
+  <link rel="icon" href="/icon.png">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <img src="/icon.png" alt="" width="40" height="40">
+    <h1 data-t="title">UniFi for Five More Minutes</h1>
+    <button id="signout" class="link" type="button" hidden data-t="signOut">Sign out</button>
+  </header>
+
+  <main>
+    <section id="login" class="card" hidden>
+      <h2 data-t="signInTitle">Sign in</h2>
+      <form id="login-form" autocomplete="off">
+        <label for="token" data-t="tokenLabel">Admin token</label>
+        <input id="token" name="token" type="password" required autocomplete="current-password" spellcheck="false">
+        <p class="hint" data-t="tokenHelp">The ADMIN_TOKEN you set when you installed the plugin.</p>
+        <p id="login-error" class="error" role="alert" hidden></p>
+        <button type="submit" class="primary" data-t="signIn">Sign in</button>
+      </form>
+    </section>
+
+    <div id="app" hidden>
+      <section class="card" aria-live="polite">
+        <h2 data-t="statusTitle">Status</h2>
+        <ul class="status">
+          <li><span id="dot-fmm" class="dot"></span><span id="line-fmm"></span></li>
+          <li><span id="dot-unifi" class="dot"></span><span id="line-unifi"></span></li>
+        </ul>
+        <p id="now" class="now"></p>
+        <p id="fmm-problem" class="error" hidden></p>
+      </section>
+
+      <form id="settings" class="card">
+        <h2 data-t="modeTitle">When should they be blocked?</h2>
+        <label class="choice">
+          <input type="radio" name="mode" value="locked">
+          <span><strong data-t="modeLocked">While the computer is locked</strong>
+            <small data-t="modeLockedHelp">When Five More Minutes locks the computer, these devices lose their internet too.</small></span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="mode" value="not-running">
+          <span><strong data-t="modeNotRunning">Whenever no time is running</strong>
+            <small id="not-running-help"></small></span>
+        </label>
+
+        <h2 data-t="devicesTitle">Which devices?</h2>
+        <input id="search" type="search" data-t-placeholder="searchPlaceholder" placeholder="Search" autocomplete="off">
+        <p id="clients-error" class="error" hidden></p>
+        <ul id="devices" class="devices"></ul>
+        <p id="no-devices" class="hint" hidden data-t="noDevices">No devices found.</p>
+
+        <p class="hint" data-t="safety">If anything goes wrong, devices are let back online. They are never left blocked.</p>
+        <div class="actions">
+          <button id="save" type="submit" class="primary" data-t="save">Save</button>
+          <span id="saved" class="ok" role="status" hidden></span>
+          <span id="save-error" class="error" role="alert" hidden></span>
+        </div>
+      </form>
+
+      <section class="card">
+        <h2 data-t="activityTitle">What happened</h2>
+        <ul id="events" class="events"></ul>
+        <p id="no-events" class="hint" data-t="noActivity">Nothing yet.</p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

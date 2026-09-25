@@ -1,0 +1,118 @@
+// Every word the page shows, in the languages of the households this was made for. A test keeps the
+// two lists the same, so a sentence is never missing in one of them.
+
+export const messages = {
+  en: {
+    title: 'UniFi for Five More Minutes',
+    signOut: 'Sign out',
+    signInTitle: 'Sign in',
+    tokenLabel: 'Admin token',
+    tokenHelp: 'The ADMIN_TOKEN you set when you installed the plugin.',
+    signIn: 'Sign in',
+    wrongToken: 'That is not the right token.',
+    tooManyTries: 'Too many wrong tries. Wait a while and try again.',
+    statusTitle: 'Status',
+    fmmOk: 'Five More Minutes: connected to {name}',
+    fmmOkNoName: 'Five More Minutes: connected',
+    fmmDown: 'Five More Minutes: not reachable',
+    unifiOk: 'UniFi: connected',
+    unifiDown: 'UniFi: not reachable',
+    unifiWaiting: 'UniFi: nothing to do yet',
+    blockingOne: 'Blocking 1 device.',
+    blockingMany: 'Blocking {n} devices.',
+    nothingBlocked: 'Nothing is blocked right now.',
+    'reason.waiting': 'Waiting to hear from Five More Minutes.',
+    'reason.locked': 'The computer is locked.',
+    'reason.lock-ended': 'The lock has ended.',
+    'reason.not-locked': 'The computer is not locked.',
+    'reason.out-of-reach': 'Five More Minutes has been out of reach for a while, so nothing is blocked.',
+    'reason.timer-running': 'A timer is running.',
+    'reason.no-timer': 'No timer is running.',
+    modeTitle: 'When should they be blocked?',
+    modeLocked: 'While the computer is locked',
+    modeLockedHelp: 'When Five More Minutes locks the computer, these devices lose their internet too.',
+    modeNotRunning: 'Whenever no time is running',
+    modeNotRunningHelp: 'Blocked unless a timer is running. If Five More Minutes cannot be reached for {minutes} minutes, they are let back online.',
+    devicesTitle: 'Which devices?',
+    searchPlaceholder: 'Search by name or address',
+    noDevices: 'No devices found.',
+    online: 'online',
+    offline: 'offline',
+    blockedInUnifi: 'Already blocked in UniFi',
+    blockedNow: 'blocked now',
+    safety: 'If anything goes wrong, devices are let back online. They are never left blocked.',
+    save: 'Save',
+    saved: 'Saved.',
+    saveFailed: 'Could not save: {message}',
+    clientsFailed: 'Could not get the list of devices from UniFi: {message}',
+    activityTitle: 'What happened',
+    noActivity: 'Nothing yet.',
+    'event.blocked': '{name} was blocked.',
+    'event.released': '{name} is back online.',
+    sessionEnded: 'You have been signed out. Sign in again.',
+  },
+  sv: {
+    title: 'UniFi för Five More Minutes',
+    signOut: 'Logga ut',
+    signInTitle: 'Logga in',
+    tokenLabel: 'Adminnyckel',
+    tokenHelp: 'ADMIN_TOKEN som du angav när du installerade tillägget.',
+    signIn: 'Logga in',
+    wrongToken: 'Fel nyckel.',
+    tooManyTries: 'För många felaktiga försök. Vänta en stund och försök igen.',
+    statusTitle: 'Status',
+    fmmOk: 'Five More Minutes: ansluten till {name}',
+    fmmOkNoName: 'Five More Minutes: ansluten',
+    fmmDown: 'Five More Minutes: går inte att nå',
+    unifiOk: 'UniFi: ansluten',
+    unifiDown: 'UniFi: går inte att nå',
+    unifiWaiting: 'UniFi: inget att göra ännu',
+    blockingOne: 'Blockerar 1 enhet.',
+    blockingMany: 'Blockerar {n} enheter.',
+    nothingBlocked: 'Inget är blockerat just nu.',
+    'reason.waiting': 'Väntar på svar från Five More Minutes.',
+    'reason.locked': 'Datorn är låst.',
+    'reason.lock-ended': 'Låsningen har tagit slut.',
+    'reason.not-locked': 'Datorn är inte låst.',
+    'reason.out-of-reach': 'Five More Minutes har inte gått att nå på ett tag, så inget är blockerat.',
+    'reason.timer-running': 'En timer är igång.',
+    'reason.no-timer': 'Ingen timer är igång.',
+    modeTitle: 'När ska de blockeras?',
+    modeLocked: 'När datorn är låst',
+    modeLockedHelp: 'När Five More Minutes låser datorn tappar de här enheterna också sitt internet.',
+    modeNotRunning: 'Så länge ingen tid är igång',
+    modeNotRunningHelp: 'Blockerade om inte en timer är igång. Om Five More Minutes inte går att nå på {minutes} minuter släpps de ut på nätet igen.',
+    devicesTitle: 'Vilka enheter?',
+    searchPlaceholder: 'Sök på namn eller adress',
+    noDevices: 'Inga enheter hittades.',
+    online: 'online',
+    offline: 'offline',
+    blockedInUnifi: 'Redan blockerad i UniFi',
+    blockedNow: 'blockerad nu',
+    safety: 'Om något går fel släpps enheterna ut på nätet igen. De lämnas aldrig blockerade.',
+    save: 'Spara',
+    saved: 'Sparat.',
+    saveFailed: 'Kunde inte spara: {message}',
+    clientsFailed: 'Kunde inte hämta enheterna från UniFi: {message}',
+    activityTitle: 'Vad som hänt',
+    noActivity: 'Inget ännu.',
+    'event.blocked': '{name} blockerades.',
+    'event.released': '{name} är online igen.',
+    sessionEnded: 'Du har loggats ut. Logga in igen.',
+  },
+};
+
+/** @param {string | undefined} language such as "sv-SE" */
+export function pick(language) {
+  return language?.toLowerCase().startsWith('sv') ? 'sv' : 'en';
+}
+
+/**
+ * @param {'en' | 'sv'} lang
+ * @param {string} key
+ * @param {Record<string, string | number>} [values]
+ */
+export function translate(lang, key, values = {}) {
+  const text = messages[lang][key] ?? messages.en[key] ?? key;
+  return text.replace(/\{(\w+)\}/g, (_, name) => String(values[name] ?? ''));
+}

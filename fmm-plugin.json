@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "id": "unifi",
+  "name": "UniFi Internet Blocker",
+  "description": "Cuts the internet for the devices you choose on your UniFi network, such as an iPad or a games console, when Five More Minutes locks the computer. Lets them back online the moment time is given.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Five More Minutes",
+    "url": "https://github.com/five-more-minutes"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/five-more-minutes/fmm-plugin-unifi",
+  "documentation": "https://github.com/five-more-minutes/fmm-plugin-unifi#readme",
+  "icon": "icon.png",
+  "categories": [
+    "network"
+  ],
+  "platform": "Docker",
+  "permissions": [
+    {
+      "scope": "state:read",
+      "reason": "Sees when the computer is locked or has a timer running, so it knows when to block. It cannot start, change or stop anything."
+    }
+  ],
+  "install": {
+    "steps": [
+      {
+        "title": "Make a UniFi account for it",
+        "text": "In your UniFi console, add a local user with the Administrator role for the Network application, and use it only for this plugin. The README shows how, step by step.",
+        "link": {
+          "label": "How to make the UniFi account",
+          "url": "https://github.com/five-more-minutes/fmm-plugin-unifi#1-make-a-unifi-account-for-it"
+        }
+      },
+      {
+        "title": "Get the plugin",
+        "text": "On a computer that is always on and on the same network as Five More Minutes (a NAS or a Raspberry Pi is ideal), download the plugin. It needs Docker.",
+        "code": "git clone https://github.com/five-more-minutes/fmm-plugin-unifi\ncd fmm-plugin-unifi\ncp .env.example .env"
+      },
+      {
+        "title": "Tell it about Five More Minutes and UniFi",
+        "text": "Open the file called .env and fill it in. The first two lines are already right for this computer. Make the admin token with: node -e \"console.log(require('crypto').randomBytes(18).toString('base64url'))\"",
+        "code": "FMM_URL={{FMM_URL}}\nFMM_API_KEY={{API_KEY}}\nUNIFI_URL=https://192.168.1.1\nUNIFI_USERNAME=fmm-plugin\nUNIFI_PASSWORD=the-password-of-that-account\nADMIN_TOKEN=a-long-random-password-for-the-settings-page"
+      },
+      {
+        "title": "Check it, then start it",
+        "text": "The check says what is wrong, if anything. If it shows a certificate fingerprint, follow the instructions in the README under Trusting the certificate.",
+        "code": "docker compose run --rm unifi node src/main.js --check\ndocker compose up -d"
+      },
+      {
+        "title": "Choose the devices",
+        "text": "Open the plugin's settings page in your browser, sign in with the admin token, tick the devices to block, and press Save. The page is on port 8099 of the computer the plugin runs on.",
+        "link": {
+          "label": "Where is the settings page?",
+          "url": "https://github.com/five-more-minutes/fmm-plugin-unifi#5-choose-the-devices"
+        }
+      }
+    ]
+  },
+  "compatibility": {
+    "apiVersion": 1
+  }
+}

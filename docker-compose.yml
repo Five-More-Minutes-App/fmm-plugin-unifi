@@ -1,0 +1,23 @@
+services:
+  unifi:
+    build: .
+    image: fmm-plugin-unifi
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      # The settings page. Keep it on your home network; do not forward this port from the internet.
+      - "8099:8099"
+    volumes:
+      - data:/data
+    # Long enough to let everyone back online before stopping.
+    stop_grace_period: 20s
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  data:
