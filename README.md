@@ -1,7 +1,7 @@
 # UniFi Internet Blocker for Five More Minutes
 
 Cuts the internet for the devices you choose on your **UniFi** network (an iPad, a games console, a
-phone) when [Five More Minutes](https://github.com/Five-More-Minutes-App/fmm-app) locks the
+phone) when [Five More Minutes](https://fivemoreminutes.app) locks the
 computer, and lets them back online the moment you give more time.
 
 It is free, open source (MIT), runs in your home, and talks to nothing outside it.
