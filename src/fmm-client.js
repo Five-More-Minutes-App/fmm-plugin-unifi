@@ -13,7 +13,7 @@
 //   - It does not follow redirects. The plugin API does not redirect, so a redirect means something
 //     is in the way, and following it would send your key to wherever it points.
 //
-// The API itself is described in docs/plugins/api-v1.md in the Five More Minutes repository.
+// The API itself is described in the public API reference at https://api.fivemoreminutes.app/docs.
 
 import { inspect } from 'node:util';
 

@@ -1,5 +1,5 @@
 // A stand-in for the Five More Minutes plugin API, for tests: the same routes, the same answers, over
-// real HTTP. It is small and deliberately faithful to docs/plugins/api-v1.md rather than clever, so that
+// real HTTP. It is small and deliberately faithful to the public API reference (api.fivemoreminutes.app/docs) rather than clever, so that
 // a test failing here means the plugin misunderstood the API, not that the mock did.
 
 import { createServer } from 'node:http';
