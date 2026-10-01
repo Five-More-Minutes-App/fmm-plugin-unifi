@@ -9,8 +9,8 @@
     "url": "https://github.com/five-more-minutes"
   },
   "license": "MIT",
-  "repository": "https://github.com/five-more-minutes/fmm-plugin-unifi",
-  "documentation": "https://github.com/five-more-minutes/fmm-plugin-unifi#readme",
+  "repository": "https://github.com/Five-More-Minutes-App/fmm-plugin-unifi",
+  "documentation": "https://github.com/Five-More-Minutes-App/fmm-plugin-unifi#readme",
   "icon": "icon.png",
   "categories": [
     "network"
@@ -30,13 +30,13 @@
         "text": "In your UniFi console, add a local user with the Administrator role for the Network application, and use it only for this plugin. The README shows how, step by step.",
         "link": {
           "label": "How to make the UniFi account",
-          "url": "https://github.com/five-more-minutes/fmm-plugin-unifi#1-make-a-unifi-account-for-it"
+          "url": "https://github.com/Five-More-Minutes-App/fmm-plugin-unifi#1-make-a-unifi-account-for-it"
         }
       },
       {
         "title": "Get the plugin",
         "text": "On a computer that is always on and on the same network as Five More Minutes (a NAS or a Raspberry Pi is ideal), download the plugin. It needs Docker.",
-        "code": "git clone https://github.com/five-more-minutes/fmm-plugin-unifi\ncd fmm-plugin-unifi\ncp .env.example .env"
+        "code": "git clone https://github.com/Five-More-Minutes-App/fmm-plugin-unifi\ncd fmm-plugin-unifi\ncp .env.example .env"
       },
       {
         "title": "Tell it about Five More Minutes and UniFi",
@@ -53,7 +53,7 @@
         "text": "Open the plugin's settings page in your browser, sign in with the admin token, tick the devices to block, and press Save. The page is on port 8099 of the computer the plugin runs on.",
         "link": {
           "label": "Where is the settings page?",
-          "url": "https://github.com/five-more-minutes/fmm-plugin-unifi#5-choose-the-devices"
+          "url": "https://github.com/Five-More-Minutes-App/fmm-plugin-unifi#5-choose-the-devices"
         }
       }
     ]

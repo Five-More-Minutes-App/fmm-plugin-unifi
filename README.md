@@ -1,7 +1,7 @@
 # UniFi Internet Blocker for Five More Minutes
 
 Cuts the internet for the devices you choose on your **UniFi** network (an iPad, a games console, a
-phone) when [Five More Minutes](https://github.com/five-more-minutes/fmm-app) locks the
+phone) when [Five More Minutes](https://github.com/Five-More-Minutes-App/fmm-app) locks the
 computer, and lets them back online the moment you give more time.
 
 It is free, open source (MIT), runs in your home, and talks to nothing outside it.
@@ -64,7 +64,7 @@ Or, if you found this plugin in the marketplace, press **Add** on its page and t
 ### 3. Get the plugin and fill in its settings
 
 ```bash
-git clone https://github.com/five-more-minutes/fmm-plugin-unifi
+git clone https://github.com/Five-More-Minutes-App/fmm-plugin-unifi
 cd fmm-plugin-unifi
 cp .env.example .env
 ```
@@ -182,7 +182,7 @@ npm run check     # type-check the JavaScript (no build step)
 The design is in four small, separately tested pieces: `src/reconciler.js` decides (pure, no I/O),
 `src/unifi.js` talks to UniFi, `src/service.js` connects the two to Five More Minutes, and `src/web.js`
 is the settings page. `src/fmm-client.js` is an unmodified copy of the client from
-[fmm-plugin-template-node](https://github.com/five-more-minutes/fmm-plugin-template-node).
+[fmm-plugin-template-node](https://github.com/Five-More-Minutes-App/fmm-plugin-template-node).
 
 ## Licence
 

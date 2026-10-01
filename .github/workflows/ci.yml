@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/checkout@v4
         with:
-          repository: five-more-minutes/fmm-plugin-registry
+          repository: Five-More-Minutes-App/fmm-plugin-registry
           path: registry
       - uses: actions/setup-node@v4
         with:
