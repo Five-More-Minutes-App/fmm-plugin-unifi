@@ -1,0 +1,18 @@
+# Keeps what this builds on current, so a published fix arrives in days and not whenever someone remembers.
+# One pull request a week per ecosystem (grouped); a security advisory opens its own at once.
+
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly }
+    groups:
+      github_actions: { patterns: ["*"] }
+  - package-ecosystem: npm
+    directory: /
+    schedule: { interval: weekly }
+    groups:
+      npm: { patterns: ["*"] }
+  - package-ecosystem: docker
+    directory: /
+    schedule: { interval: weekly }
